@@ -9,7 +9,7 @@ public class Main {
 
 
         Employee.getFullInformation(Employees);
-        int sumSalaries = Employee.getSalaryExpenses(Employees);
+        double sumSalaries = Employee.getSalaryExpenses(Employees);
         System.out.println("Сумма затраченная на зарплаты равна " + sumSalaries);
         Employee.getEmployeeWithMinSalary(Employees);
         Employee.getEmployeeWithMaxSalary(Employees);

@@ -3,17 +3,17 @@ import java.util.Objects;
 public class Employee {
     private final int minDepartment = 1;
     private final int maxDepartment = 5;
-    private final int minSalary = 1000;
-    private final int maxSalary = 25000;
+    private final double minSalary = 1000;
+    private final double maxSalary = 25000;
     private String firstName;
     private String middleName;
     private String lastName;
     private int department;
-    private int salary;
+    private double salary;
     private static int counter = 1;
-    private int id;
+    private final int id;
 
-    public Employee(String firstName, String middleName, String lastName, int department, int salary) {
+    public Employee(String firstName, String middleName, String lastName, int department, double salary) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -38,7 +38,7 @@ public class Employee {
         return department;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -58,7 +58,7 @@ public class Employee {
         this.department = department;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         boolean isParameterValid = Validator.isNumberIsInInterval(salary, minSalary, maxSalary);
         if(!isParameterValid){
             throw new IndexOutOfBoundsException("Заданная зарплата не соответствует критериям!");
@@ -68,7 +68,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return firstName + " " + middleName + " " + lastName + " " + department + " " + salary;
+        return "Id: " + id + " " + firstName + " " + middleName + " " + lastName + " " + department + " " + String.format("%.2f", salary);
     }
 
     @Override
@@ -93,8 +93,8 @@ public class Employee {
         }
     }
 
-    public static int getSalaryExpenses(Employee[] employees) {
-        int sum = 0;
+    public static double getSalaryExpenses(Employee[] employees) {
+        double sum = 0d;
         for (Employee employee : employees) {
             sum += employee.salary;
         }
@@ -102,7 +102,7 @@ public class Employee {
     }
 
     public static void getEmployeeWithMinSalary(Employee[] employees) {
-        int minSalary = Integer.MAX_VALUE;
+        double minSalary = Integer.MAX_VALUE;
         Employee employeeWithMinSalary = null;
         for (Employee employee : employees) {
             if (employee.getSalary() < minSalary) {
@@ -114,7 +114,7 @@ public class Employee {
     }
 
     public static void getEmployeeWithMaxSalary(Employee[] employees) {
-        int maxSalary = Integer.MIN_VALUE;
+        double maxSalary = Integer.MIN_VALUE;
         Employee employeeWithMaxSalary = null;
         for (Employee employee : employees) {
             if (employee.getSalary() > maxSalary) {
@@ -126,7 +126,7 @@ public class Employee {
     }
 
     public static void getAverageSalary(Employee[] employees) {
-        int averageSalary = getSalaryExpenses(employees) / employees.length;
+        double averageSalary = getSalaryExpenses(employees) / employees.length;
         System.out.println("Среднее значение зарплат равно " + averageSalary);
     }
 
@@ -147,7 +147,7 @@ public class Employee {
     }
 
     public static void getEmployeeWithMinSalaryInDepartment(int department, Employee[] employees) {
-        int minSalary = Integer.MAX_VALUE;
+        double minSalary = Integer.MAX_VALUE;
         Employee employeeWithMinSalary = null;
         if (department >= 1 && department <= 5) {
             for (Employee employee : employees) {
@@ -162,7 +162,7 @@ public class Employee {
         }
     }
     public static void getEmployeeWithMaxSalaryInDepartment(int department, Employee[] employees){
-        int maxSalary = Integer.MIN_VALUE;
+        double maxSalary = Integer.MIN_VALUE;
         Employee employeeWithMaxSalary = null;
         if (department >= 1 && department <= 5) {
             for (Employee employee : employees) {
@@ -180,8 +180,9 @@ public class Employee {
         int sum = 0;
         if (department >= 1 && department <= 5) {
             for (Employee employee : employees) {
-                if(employee.getDepartment() == department)
-                sum += employee.salary;
+                if(employee.getDepartment() == department) {
+                    sum += employee.salary;
+                }
             }
         } else {
             throw new IndexOutOfBoundsException("Несуществующий департамент");
