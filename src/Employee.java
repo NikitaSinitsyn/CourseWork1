@@ -102,7 +102,7 @@ public class Employee {
     }
 
     public static void getEmployeeWithMinSalary(Employee[] employees) {
-        double minSalary = Integer.MAX_VALUE;
+        double minSalary = Double.MAX_VALUE;
         Employee employeeWithMinSalary = null;
         for (Employee employee : employees) {
             if (employee.getSalary() < minSalary) {
@@ -114,7 +114,7 @@ public class Employee {
     }
 
     public static void getEmployeeWithMaxSalary(Employee[] employees) {
-        double maxSalary = Integer.MIN_VALUE;
+        double maxSalary = Double.MIN_VALUE;
         Employee employeeWithMaxSalary = null;
         for (Employee employee : employees) {
             if (employee.getSalary() > maxSalary) {
@@ -147,7 +147,7 @@ public class Employee {
     }
 
     public static void getEmployeeWithMinSalaryInDepartment(int department, Employee[] employees) {
-        double minSalary = Integer.MAX_VALUE;
+        double minSalary = Double.MAX_VALUE;
         Employee employeeWithMinSalary = null;
         if (department >= 1 && department <= 5) {
             for (Employee employee : employees) {
@@ -162,7 +162,7 @@ public class Employee {
         }
     }
     public static void getEmployeeWithMaxSalaryInDepartment(int department, Employee[] employees){
-        double maxSalary = Integer.MIN_VALUE;
+        double maxSalary = Double.MIN_VALUE;
         Employee employeeWithMaxSalary = null;
         if (department >= 1 && department <= 5) {
             for (Employee employee : employees) {
